@@ -1,0 +1,13 @@
+{
+  "editor.rulers": [
+    80
+  ],
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+  ],
+  "npm.packageManager": "yarn"
+}
