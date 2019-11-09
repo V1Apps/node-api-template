@@ -8,6 +8,15 @@ If you are cloning this template for the first time, here are some steps you sho
 1. Go to `.github/pull_request_template.md` and ensure that the template makes sense for this repo.
 1. Edit the `package.json` file so that the name and description are relevant to this project.
 
+This template covers:
+[x] - Basic routing
+[x] - Error handling
+[x] - Typescript Setup and Linting
+[x] - VS Code Configuration
+[x] - `dotenv` setup.
+[ ] - Sequelize setup
+[ ] - Basic Authentication Middleware
+
 ## Overview
 Here is a quick overview of the project directories.
 
