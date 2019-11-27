@@ -4,16 +4,31 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "sequelize": "sequelize",
     "start:dev": "ts-node-dev ./index.ts",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "migrate": "sequelize db:migrate",
+    "migrate:status": "sequelize db:migrate:status",
+    "migrate:rollback": "sequelize db:migrate:undo",
+    "migrate:refresh": "sequelize db:migrate:undo:all && migrate",
+    "db:seed": "sequelize db:seed",
+    "db:seed:all": "sequelize db:seed:all",
+    "make:migration": "sequelize migration:generate",
+    "make:model": "sequelize model:generate",
+    "make:seed": "sequelize seed:generate"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1",
+    "sequelize-typescript": "^1.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
-    "@types/node": "^12.12.7",
+    "@types/node": "^12.12.14",
+    "@types/sequelize": "^4.28.8",
+    "@types/validator": "^12.0.1",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "eslint": "^6.6.0",
