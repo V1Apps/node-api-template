@@ -1,7 +1,5 @@
 {
-  "editor.rulers": [
-    80
-  ],
+
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
     {
@@ -9,5 +7,6 @@
       "autoFix": true
     },
   ],
-  "npm.packageManager": "yarn"
+  "npm.packageManager": "yarn",
+  "checkpoints.showActiveFileOnly": true
 }

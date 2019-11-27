@@ -1,9 +1,30 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
+    "target": "es6",
+    "removeComments": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "build",
     "noImplicitAny": true,
-    "strict": true
-  }
+    "sourceMap": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "paths": {
+      "src/*": [
+        "./src"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "./src/**/*.ts", "src/core/sequelize/config.js"
+  ],
 }

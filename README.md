@@ -8,6 +8,7 @@ If you are cloning this template for the first time, here are some steps you sho
 1. Go to `.github/pull_request_template.md` and ensure that the template makes sense for this repo.
 1. Edit the `package.json` file so that the name and description are relevant to this project.
 
+
 This template covers:
 - [x] - Basic routing
 - [x] - Error handling
@@ -16,6 +17,23 @@ This template covers:
 - [x] - `dotenv` setup.
 - [ ] - Sequelize setup
 - [ ] - Basic Authentication Middleware
+
+
+
+## Database
+|               Command      |                       Description                             |
+|----------------------------|---------------------------------------------------------------|
+| `yarn make:migration`      | Generates a new migration file  [aliases: migration:create]   |
+| `yarn make:model`          | Generates a model and its migration  [aliases: model:create]  |
+| `yarn make:seed`           | Generates a new seed file  [aliases: seed:create]             |
+| `yarn migrate`             | Run pending migrations                                        |
+| `yarn migrate:status`      | List the status of all migrations                             |
+| `yarn migrate:rollback`    | Reverts a migration                                           |
+| `yarn migrate:refresh`     | Revert all migrations ran and Run all migrations again.       |
+| `yarn db:seed`             | Run specified seeder                                          |
+| `yarn db:seed:all`         | Run every seeder                                              |
+
+
 
 ## Overview
 Here is a quick overview of the project directories.
