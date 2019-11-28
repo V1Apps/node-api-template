@@ -32,7 +32,7 @@ class Route {
   }
 }
 
-function wrapAsync(handler: CallableFunction) {
+function wrapAsync(handler: Function) {
   return async function (request: express.Request, response: express.Response, next: express.NextFunction) {
     if (handler) {
       handler(request, response, next).catch(next);
