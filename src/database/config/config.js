@@ -1,10 +1,11 @@
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
+const dotenv = require("dotenv");
 dotenv.config();
 
 const host = getEnv('DB_HOST', 'localhost');
 const database = getEnv('DB_DATABASE', 'node-api');
 const dialect = 'postgres';
-const username = getEnv('DB_DATABASE', 'root');
+const username = getEnv('DB_USER', 'postgres');
 const password = getEnv('DB_PASSWORD', '');
 const port = parseInt(getEnv('DB_PORT', '5432'));
 
@@ -13,14 +14,12 @@ module.exports = {
     development: {
         url: `${dialect}://${username}@${host}:${port}/${database}`,
         password: password,
-        dialect: dialect,
-        operatorsAliases: false,
+        dialect: dialect
     },
     production: {
         url: `${dialect}://${username}@${host}:${port}/${database}`,
         dialect: dialect,
-        password: password,
-        operatorsAliases: false,
+        password: password
     },
 };
 

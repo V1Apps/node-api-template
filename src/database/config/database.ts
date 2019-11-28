@@ -1,15 +1,12 @@
 import { Sequelize } from 'sequelize-typescript';
 import { join } from 'path';
-import { getEnv } from '../../utils';
+import * as config from './config';
 
-const db = new Sequelize({
-    host: getEnv('DB_HOST', 'localhost'),
-    database: getEnv('DB_DATABASE', 'database'),
-    dialect: 'postgres',
-    username: getEnv('DB_DATABASE', 'root'),
-    password: getEnv('DB_PASSWORD', ''),
-    port: parseInt(getEnv('DB_PORT', '5432')),
+const env = 'development';
+const { url, dialect, password } = config[env];
+const options: any = {
+    dialect: dialect,
+    password: password,
     models: [join(__dirname, '..', '..', 'database', 'models')],
-});
-
-export default db;
+}
+export default new Sequelize(url, options);

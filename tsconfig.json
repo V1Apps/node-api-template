@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
@@ -13,6 +12,7 @@
     "sourceMap": true,
     "strict": false,
     "moduleResolution": "node",
+    "allowJs": true,
     "importHelpers": true,
     "paths": {
       "src/*": [
