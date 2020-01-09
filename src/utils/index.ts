@@ -1,3 +1,7 @@
-export function getEnv(key: string, default_value: string = "") {
-    return process.env[key] || default_value
+export function getEnv(key: string): string {
+  if (process.env[key]) {
+    return process.env[key]
+  }
+
+  throw new Error(`process.env.${key} not defined.`)
 }

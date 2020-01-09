@@ -6,10 +6,7 @@ class AppError extends Error {
 
   constructor(
     errorType: ErrorType,
-    {
-      message,
-      httpStatusCode,
-    }: { message?: string; httpStatusCode?: number } = {}
+    { message, httpStatusCode }: { message?: string; httpStatusCode?: number } = {}
   ) {
     console.log(errorType.code)
     super(message || errorType.defaultMessage)

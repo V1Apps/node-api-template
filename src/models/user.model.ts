@@ -1,22 +1,22 @@
-import { Table, Column } from 'sequelize-typescript';
-import { BaseModel } from '../database/baseModel';
+import { Table, Column } from 'sequelize-typescript'
+import { BaseModel } from '../database/baseModel'
 
 @Table({ tableName: 'users' })
 export default class User extends BaseModel<User> {
-  firstName: string;
+  firstName: string
 
   @Column
-  lastName: string;
+  lastName: string
 
   @Column
-  email: string;
+  email: string
 
   @Column
-  readonly encryptedPassword: string;
+  readonly encryptedPassword: string
 
   @Column
-  readonly createdAt: Date;
+  readonly createdAt: Date
 
   @Column
-  readonly updatedAt: Date;
+  readonly updatedAt: Date
 }

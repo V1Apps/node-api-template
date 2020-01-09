@@ -1,23 +1,23 @@
-import { Table, Column, HasMany } from 'sequelize-typescript';
-import { Model } from '../config/model';
+import { Table, Column } from 'sequelize-typescript'
+import { Model } from '../config/model'
 
 @Table
 export default class User extends Model<User> {
   @Column
-  firstName: string;
+  firstName: string
 
   @Column
-  lastName: string;
+  lastName: string
 
   @Column
-  email: string;
+  email: string
 
   @Column
-  password: string;
+  password: string
 
   @Column
-  readonly createdAt: Date;
+  readonly createdAt: Date
 
   @Column
-  readonly updatedAt: Date;
+  readonly updatedAt: Date
 }

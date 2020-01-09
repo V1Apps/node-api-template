@@ -5,17 +5,10 @@
   "license": "MIT",
   "scripts": {
     "db:reset": "sequelize db:drop > /dev/null 2>&1 || true && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "start:dev": "ts-node-dev ./index.ts",
-    "tsc": "tsc",
-    "migrate": "sequelize db:migrate",
-    "migrate:status": "sequelize db:migrate:status",
-    "migrate:rollback": "sequelize db:migrate:undo",
-    "migrate:refresh": "sequelize db:migrate:undo:all && migrate",
-    "db:seed": "sequelize db:seed",
-    "db:seed:all": "sequelize db:seed:all",
-    "make:migration": "sequelize migration:generate",
-    "make:model": "sequelize model:generate",
-    "make:seed": "sequelize seed:generate"
+    "tsc": "tsc"
   },
   "dependencies": {
     "@firebase/auth": "^0.13.1",

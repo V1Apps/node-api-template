@@ -10,8 +10,13 @@ const ErrorTypes = {
     defaultMessage: 'Something unexpected happened.',
     defaultHttpStatusCode: 500,
   },
-  OBJECT_NOT_FOUND: {
+  UNAUTHORIZED: {
     code: 2001,
+    defaultMessage: 'You do not have permission to do this.',
+    defaultHttpStatusCode: 401,
+  },
+  OBJECT_NOT_FOUND: {
+    code: 2004,
     defaultMessage: 'Object not found.',
     defaultHttpStatusCode: 404,
   },
