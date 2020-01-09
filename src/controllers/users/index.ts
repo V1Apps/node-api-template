@@ -1,17 +1,7 @@
 import express from 'express'
+import User from '../../models/user.model'
 
-export default (request: express.Request, response: express.Response) => {
-  response.json(render())
-}
-
-const render = () => {
-  return {
-    data: [
-      {
-        id: "1",
-        firstName: "First",
-        lastName: "Last"
-      }
-    ]
-  }
+export default async (request: express.Request, response: express.Response) => {
+  const users = await User.findAll()
+  response.json(users)
 }
