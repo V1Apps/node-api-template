@@ -4,22 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "sequelize": "sequelize",
+    "db:reset": "sequelize db:drop > /dev/null 2>&1 || true && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
     "start:dev": "ts-node-dev ./index.ts",
-    "tsc": "tsc",
-    "migrate": "sequelize db:migrate",
-    "migrate:status": "sequelize db:migrate:status",
-    "migrate:rollback": "sequelize db:migrate:undo",
-    "migrate:refresh": "sequelize db:migrate:undo:all && migrate",
-    "db:seed": "sequelize db:seed",
-    "db:seed:all": "sequelize db:seed:all",
-    "make:migration": "sequelize migration:generate",
-    "make:model": "sequelize model:generate",
-    "make:seed": "sequelize seed:generate"
+    "tsc": "tsc"
   },
   "dependencies": {
+    "@types/faker": "^4.1.8",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "pg": "^7.14.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.2",
