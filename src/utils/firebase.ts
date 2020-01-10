@@ -1,5 +1,7 @@
-import { getEnv } from '../utils'
 import firebase from 'firebase'
+import AppError from '../errors/appError'
+import ErrorTypes from '../errors/errorTypes'
+import { getEnv } from '../utils'
 import { User } from '../models'
 
 export default class FirebaseUtils {
@@ -22,6 +24,14 @@ export default class FirebaseUtils {
 
   async signInWithEmailAndPassword(email: string, password: string): Promise<User> {
     const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
-    return User.findOne({ where: { firebaseId: userCredential.user.uid } })
+    const user = await User.findOne({ where: { firebaseId: userCredential.user.uid } })
+
+    if (!user) {
+      throw new AppError(ErrorTypes.UNAUTHORIZED, {
+        message: 'Firebase Auth worked but user was not found.',
+      })
+    }
+
+    return user
   }
 }

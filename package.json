@@ -7,8 +7,9 @@
     "db:reset": "sequelize db:drop > /dev/null 2>&1 || true && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
+    "logs:staging": "heroku logs --tail -a node-api-template-staging",
     "start:dev": "ts-node-dev ./src/index.ts",
-    "tsc": "tsc",
+    "tsc": "tsc --target es5",
     "start": "tsc && node ./build/index.js"
   },
   "dependencies": {
