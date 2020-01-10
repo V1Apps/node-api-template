@@ -1,7 +1,7 @@
 import { Column, Model, Table } from 'sequelize-typescript'
 
 @Table({ underscored: true, paranoid: true, timestamps: true })
-export class BaseModel<T> extends Model<T> {
+export abstract class BaseModel<T> extends Model<T> {
   @Column
   readonly createdAt: Date
 
