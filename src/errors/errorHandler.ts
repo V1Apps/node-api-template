@@ -22,11 +22,12 @@ const errorHandler = (
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    errorResponse.stackTrace = error!.stack!.split('\n')
+    const stack = error.stack
+    if (stack) errorResponse.stackTrace = stack.split('\n')
   }
 
   if (!response.headersSent) {
-    response.status(httpStatusCode).json({ errorResponse })
+    response.status(httpStatusCode).json({ error: errorResponse })
   }
 
   next(error)

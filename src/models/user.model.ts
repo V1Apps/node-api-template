@@ -3,6 +3,10 @@ import { BaseModel } from './baseModel'
 
 @Table
 export default class User extends BaseModel<User> {
+  @Column
+  firebaseId: string
+
+  @Column
   firstName: string
 
   @Column
@@ -10,9 +14,6 @@ export default class User extends BaseModel<User> {
 
   @Column
   email: string
-
-  @Column
-  readonly encryptedPassword: string
 
   @Column
   readonly createdAt: Date

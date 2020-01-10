@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import express from 'express'
 
-import authenticationMiddleware from '../middleware/authentication'
+import asignUserMiddleware from '../middleware/asignUser'
+import authorizeUserMiddleware from '../middleware/authorizeUser'
 
 import routes from './routes'
 
@@ -19,25 +22,29 @@ function wrapAsync(handler: Function) {
 const router = express.Router()
 
 for (const route of routes) {
+  const handlers = [wrapAsync(asignUserMiddleware)]
+
   if (!route.isPublic) {
-    router.use(authenticationMiddleware)
+    handlers.push(wrapAsync(authorizeUserMiddleware))
   }
+
+  handlers.push(wrapAsync(route.handler))
 
   switch (route.method) {
     case 'PATCH':
-      router.patch(route.path, wrapAsync(route.handler))
+      router.patch(route.path, handlers)
       break
     case 'POST':
-      router.post(route.path, wrapAsync(route.handler))
+      router.post(route.path, handlers)
       break
     case 'PUT':
-      router.put(route.path, wrapAsync(route.handler))
+      router.put(route.path, handlers)
       break
     case 'DELETE':
-      router.delete(route.path, wrapAsync(route.handler))
+      router.delete(route.path, handlers)
       break
     default:
-      router.get(route.path, wrapAsync(route.handler))
+      router.get(route.path, handlers)
       break
   }
 }

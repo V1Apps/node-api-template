@@ -4,12 +4,19 @@ module.exports = {
     return queryInterface.createTable('users', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal('uuid_generate_v4()')
+      },
+      firebase_id: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       phone_number: {
         type: Sequelize.STRING,
@@ -18,9 +25,6 @@ module.exports = {
         type: Sequelize.STRING,
       },
       last_name: {
-        type: Sequelize.STRING,
-      },
-      encrypted_password: {
         type: Sequelize.STRING,
       },
       created_at: {

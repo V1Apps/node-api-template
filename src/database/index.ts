@@ -19,7 +19,6 @@ const paths = fs.readdirSync(modelsDirectoryPath)
 for (const path of paths) {
   if (path.includes('.model')) {
     modelPaths.push(`${modelsDirectoryPath}/${path}`)
-    console.log(modelPaths)
   }
 }
 

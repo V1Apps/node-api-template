@@ -1,25 +1,27 @@
-import firebase, { auth } from 'firebase'
-
 import { getEnv } from '../utils'
+import firebase from 'firebase'
+import { User } from '../models'
 
-export default class FirebaseAuth {
+export default class FirebaseUtils {
+  static instance: FirebaseUtils
+
+  static get(): FirebaseUtils {
+    if (!this.instance) {
+      this.instance = new FirebaseUtils()
+    }
+
+    return this.instance
+  }
+
   constructor() {
     firebase.initializeApp({
       apiKey: getEnv('FIREBASE_API_KEY'),
       authDomain: getEnv('FIREBASE_AUTH_DOMAIN'),
-      projectId: getEnv('FIREBASE_PROJECT_ID'),
     })
   }
 
-  currentUser(): firebase.User {
-    return auth().currentUser
-  }
-
-  createUser(email: string, password: string): Promise<firebase.auth.UserCredential> {
-    return auth().createUserWithEmailAndPassword(email, password)
-  }
-
-  signIn(email: string, password: string): Promise<firebase.auth.UserCredential> {
-    return auth().signInWithEmailAndPassword(email, password)
+  async signInWithEmailAndPassword(email: string, password: string): Promise<User> {
+    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
+    return User.findOne({ where: { firebaseId: userCredential.user.uid } })
   }
 }
