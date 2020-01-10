@@ -1,13 +1,14 @@
-import express from 'express';
-import router from './router';
-import errorHandler from './errors/errorHandler';
-import Database from './database';
-declare let global:any;
+import express from 'express'
+import bodyParser from 'body-parser'
+import './database'
 
-const application = express();
+import router from './router'
+import errorHandler from './errors/errorHandler'
 
-global.db = Database;
-application.use(router);
+const application = express()
+
+application.use(bodyParser.json())
+application.use(router)
 application.use(errorHandler)
 
-export default application;
+export default application

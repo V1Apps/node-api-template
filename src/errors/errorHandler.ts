@@ -13,8 +13,8 @@ const errorHandler = (
   response: express.Response,
   next: express.NextFunction
 ): void => {
-  let httpStatusCode = error.httpStatusCode ? error.httpStatusCode : 500
-  let errorCode = error.code ? error.code : 2000
+  const httpStatusCode = error.httpStatusCode ? error.httpStatusCode : 500
+  const errorCode = error.code ? error.code : 2000
 
   const errorResponse: ErrorResponse = {
     code: errorCode,
@@ -22,11 +22,12 @@ const errorHandler = (
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    errorResponse.stackTrace = error!.stack!.split('\n')
+    const stack = error.stack
+    if (stack) errorResponse.stackTrace = stack.split('\n')
   }
 
   if (!response.headersSent) {
-    response.status(httpStatusCode).json({ errorResponse })
+    response.status(httpStatusCode).json({ error: errorResponse })
   }
 
   next(error)
