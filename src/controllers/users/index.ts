@@ -1,7 +1,7 @@
 import express from 'express'
-import User from '../../models/user.model'
+import { User } from '../../models'
 
-export default async (request: express.Request, response: express.Response): Promise<void> => {
+export default async (_: express.Request, response: express.Response): Promise<void> => {
   const users = await User.findAll()
   response.json(users)
 }

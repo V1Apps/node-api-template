@@ -1,17 +1,8 @@
 import express from 'express'
-import Route from './route'
 
 import authenticationMiddleware from '../middleware/authentication'
 
-import indexRoute from '../controllers/users/index'
-
-const routes: Route[] = [
-  {
-    path: '/',
-    isPublic: false,
-    handler: indexRoute,
-  },
-]
+import routes from './routes'
 
 function wrapAsync(handler: Function) {
   return async function(

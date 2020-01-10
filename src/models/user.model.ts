@@ -1,7 +1,7 @@
 import { Table, Column } from 'sequelize-typescript'
-import { BaseModel } from '../database/baseModel'
+import { BaseModel } from './baseModel'
 
-@Table({ tableName: 'users' })
+@Table
 export default class User extends BaseModel<User> {
   firstName: string
 
