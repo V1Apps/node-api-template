@@ -1,4 +1,5 @@
 import { ErrorType } from './errorTypes'
+export { default as ErrorTypes } from './errorTypes'
 
 class AppError extends Error {
   code: number
