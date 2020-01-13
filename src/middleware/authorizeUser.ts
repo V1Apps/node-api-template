@@ -1,6 +1,5 @@
 import { Response, NextFunction } from 'express'
-import AppError from '../errors/appError'
-import ErrorTypes from '../errors/errorTypes'
+import AppError, { ErrorTypes } from '../errors/appError'
 
 import { BaseRequest } from '../types'
 

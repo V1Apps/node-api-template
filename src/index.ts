@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
+import './utilities/firebase'
 import application from './application'
 
 const port = process.env.PORT || 3001
