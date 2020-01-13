@@ -2,7 +2,7 @@ import express from 'express'
 import AppError from './appError'
 
 interface ErrorResponse {
-  code: number
+  code: number | string
   message: string
   stackTrace?: string[]
 }
