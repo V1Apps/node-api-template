@@ -1,21 +1,23 @@
+import Firebase from '../utils/firebase'
 import { Response, NextFunction } from 'express'
-// import AppError from '../errors/appError'
-// import ErrorTypes from '../errors/errorTypes'
-
 import { BaseRequest } from '../types'
+import { User } from '../models'
+
+import AppError, { ErrorTypes } from '../errors/appError'
 
 export default async (request: BaseRequest, _: Response, next: NextFunction): Promise<void> => {
-  // const token = request.header('authorization')
+  const token = request.header('authorization')
+  const decodedIdToken = await Firebase.get().decodeIdToken(token)
+  const userId = decodedIdToken.user_id
 
-  // if (token) {
-  //   const accessToken = await AccessToken.findByPk(token)
+  const user = await User.findByPk(userId)
 
-  //   if (accessToken) {
-  //     request.currentUser = await User.findByPk(accessToken.userId)
-  //   } else {
-  //     throw new AppError(ErrorTypes.UNAUTHORIZED, { message: 'Authorization token invalid.' })
-  //   }
-  // }
+  if (!user) {
+    throw new AppError(ErrorTypes.UNAUTHORIZED, {
+      message: 'Token was valid, but user associated with token was not found.',
+    })
+  }
 
+  request.currentUser = user
   next()
 }

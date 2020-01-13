@@ -25,6 +25,10 @@ export default class Firebase {
     })
   }
 
+  async decodeIdToken(idToken: string): Promise<admin.auth.DecodedIdToken> {
+    return admin.auth().verifyIdToken(idToken)
+  }
+
   async signInWithEmailAndPassword(
     email: string,
     password: string
