@@ -2,7 +2,7 @@
 
 import express from 'express'
 
-import asignUserMiddleware from '../middleware/asignUser'
+import assignUserMiddleware from '../middleware/assignUser'
 import authorizeUserMiddleware from '../middleware/authorizeUser'
 
 import routes from './routes'
@@ -22,7 +22,7 @@ function wrapAsync(handler: Function) {
 const router = express.Router()
 
 for (const route of routes) {
-  const handlers = [wrapAsync(asignUserMiddleware)]
+  const handlers = [wrapAsync(assignUserMiddleware)]
 
   if (!route.isPublic) {
     handlers.push(wrapAsync(authorizeUserMiddleware))
