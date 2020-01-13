@@ -1,7 +1,7 @@
 import firebase from 'firebase'
-import path from 'path'
-import { getEnv } from '../utils'
 import admin from 'firebase-admin'
+
+import { getEnv } from '../utils'
 export default class Firebase {
   static instance: Firebase
 
@@ -15,8 +15,11 @@ export default class Firebase {
 
   constructor() {
     admin.initializeApp({
-      credential: admin.credential.cert(path.join(__dirname, '..', '..', 'foobar.json')),
-      databaseURL: 'https://sifted-development.firebaseio.com',
+      credential: admin.credential.cert({
+        projectId: getEnv('FIREBASE_PROJECT_ID'),
+        privateKey: getEnv('FIREBASE_PRIVATE_KEY'),
+        clientEmail: getEnv('FIREBASE_CLIENT_EMAIL'),
+      }),
     })
 
     firebase.initializeApp({

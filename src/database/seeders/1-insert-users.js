@@ -19,7 +19,7 @@ module.exports = {
     }
 
     data.push({
-      firebase_id: 'KI277WWcHuX7HRILKT3m3ubTI403',
+      firebase_id: 'seyAizX8dAhooJYIu4dMH7hrJYs2',
       first_name: 'Tamby',
       last_name: 'Kojak',
       email: 'tamby@v1apps.com',
