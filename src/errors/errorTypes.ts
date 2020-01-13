@@ -1,22 +1,22 @@
 export interface ErrorType {
-  code: number
+  code: number | string
   defaultMessage: string
   defaultHttpStatusCode: number
 }
 
 const ErrorTypes = {
   GENERIC: {
-    code: 2000,
+    code: 'generic',
     defaultMessage: 'Something unexpected happened.',
     defaultHttpStatusCode: 500,
   },
   UNAUTHORIZED: {
-    code: 2001,
+    code: 'unauthorized',
     defaultMessage: 'You do not have permission to do this.',
     defaultHttpStatusCode: 401,
   },
   OBJECT_NOT_FOUND: {
-    code: 2004,
+    code: 'not_found',
     defaultMessage: 'Object not found.',
     defaultHttpStatusCode: 404,
   },
